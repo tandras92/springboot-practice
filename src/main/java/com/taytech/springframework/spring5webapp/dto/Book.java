@@ -23,6 +23,9 @@ public class Book {
     private String genre;
 
     @NotNull
+    private Publisher publisher;
+
+    @NotNull
     private Set<Author> authors = new HashSet<>();
 
     public Book() {}
@@ -46,6 +49,14 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public String getIsbn() {
