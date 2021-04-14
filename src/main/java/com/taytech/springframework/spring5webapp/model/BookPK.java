@@ -1,7 +1,8 @@
 package com.taytech.springframework.spring5webapp.model;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,7 +12,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Embeddable
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class BookPK implements Serializable {
 
@@ -27,5 +29,31 @@ public class BookPK implements Serializable {
     public BookPK(final UUID bookId, final LocalDateTime recordCreateTime) {
         this.bookId = bookId;
         this.recordCreateTime = recordCreateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "BookPK{" +
+                "bookId=" + bookId +
+                ", recordCreateTime=" + recordCreateTime +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BookPK bookPK = (BookPK) o;
+
+        if (!bookId.equals(bookPK.bookId)) return false;
+        return recordCreateTime.equals(bookPK.recordCreateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = bookId.hashCode();
+        result = 31 * result + recordCreateTime.hashCode();
+        return result;
     }
 }
