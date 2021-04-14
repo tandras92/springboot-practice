@@ -10,4 +10,5 @@ public class FakerObject {
     String authorLastName = faker.name().lastName();
     String bookTitle = faker.book().title();
     String bookPublisher = faker.book().publisher();
+    String bookGenre = faker.book().genre();
 }
