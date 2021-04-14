@@ -15,7 +15,7 @@ public class AuthorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "first_nm", nullable = false, length = 50)
     private String firstName;
