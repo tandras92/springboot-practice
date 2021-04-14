@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -22,9 +23,14 @@ public class Book {
     private String genre;
 
     @NotNull
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     public Book() {}
+
+    public Book(String title, String isbn) {
+        this.title = title;
+        this.isbn = isbn;
+    }
 
     public String getTitle() {
         return title;
