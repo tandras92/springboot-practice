@@ -19,7 +19,11 @@ public class BookEntity {
     @Column(name = "book_title", nullable = false, length = 75)
     private String title;
 
+    @Column(name = "book_isbn", nullable = false, length = 13)
     private String isbn;
+
+    @ManyToOne
+    private PublisherEntity publisher;
 
     private String genre;
 
@@ -29,10 +33,11 @@ public class BookEntity {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<AuthorEntity> authors;
 
-    public BookEntity(BookPK bookPK, String title, String isbn, String genre, Set<AuthorEntity> authors) {
+    public BookEntity(BookPK bookPK, String title, String isbn, PublisherEntity publisher, String genre, Set<AuthorEntity> authors) {
         this.bookPK = bookPK;
         this.title = title;
         this.isbn = isbn;
+        this.publisher = publisher;
         this.genre = genre;
         this.authors = authors;
     }
@@ -43,6 +48,7 @@ public class BookEntity {
                 "bookPK=" + bookPK +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
+                ", publisher=" + publisher +
                 ", genre='" + genre + '\'' +
                 ", authors=" + authors +
                 '}';
