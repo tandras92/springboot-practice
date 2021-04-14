@@ -35,5 +35,6 @@ public class BootStrapData implements CommandLineRunner {
         author.getBooks().add(book);
         book.getAuthors().add(author);
 
+       // TODO add test data to DB after mapper is completed
     }
 }
