@@ -1,7 +1,12 @@
 package com.taytech.springframework.spring5webapp.faker;
 
 import com.github.javafaker.Faker;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@Data
+@NoArgsConstructor
 public class FakerObject {
 
     Faker faker = new Faker();
