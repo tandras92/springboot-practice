@@ -1,2 +1,4 @@
-package com.taytech.springframework.spring5webapp.service.impl;public class AuthorServiceImpl {
+package com.taytech.springframework.spring5webapp.service.impl;
+
+public class AuthorServiceImpl {
 }

@@ -1,2 +1,7 @@
-package com.taytech.springframework.spring5webapp.service.impl;public interface BookService {
+package com.taytech.springframework.spring5webapp.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public interface BookService {
 }
