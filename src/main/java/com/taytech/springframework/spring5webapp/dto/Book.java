@@ -6,6 +6,7 @@ public class Book {
 
     private String title;
     private String isbn;
+    private String genre;
     private Set<Author> authors;
 
     public Book() {}
@@ -16,6 +17,14 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getIsbn() {
