@@ -1,8 +1,6 @@
 package com.taytech.springframework.spring5webapp.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -10,6 +8,8 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class BookEntity {
 
@@ -25,6 +25,7 @@ public class BookEntity {
     @ManyToOne
     private PublisherEntity publisher;
 
+    @Column(name = "book_genre", nullable = false, length = 75)
     private String genre;
 
     @ManyToMany
@@ -33,14 +34,7 @@ public class BookEntity {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<AuthorEntity> authors;
 
-    public BookEntity(BookPK bookPK, String title, String isbn, PublisherEntity publisher, String genre, Set<AuthorEntity> authors) {
-        this.bookPK = bookPK;
-        this.title = title;
-        this.isbn = isbn;
-        this.publisher = publisher;
-        this.genre = genre;
-        this.authors = authors;
-    }
+
 
     @Override
     public String toString() {

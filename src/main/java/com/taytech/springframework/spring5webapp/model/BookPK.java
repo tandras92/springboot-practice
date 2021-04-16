@@ -1,19 +1,17 @@
 package com.taytech.springframework.spring5webapp.model;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Embeddable
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class BookPK implements Serializable {
 
@@ -24,9 +22,9 @@ public class BookPK implements Serializable {
     private UUID bookId;
 
     @Column(name = "record_create_ts", nullable = false)
-    private LocalDateTime recordCreateTime;
+    private Timestamp recordCreateTime;
 
-    public BookPK(final UUID bookId, final LocalDateTime recordCreateTime) {
+    public BookPK(final UUID bookId, final Timestamp recordCreateTime) {
         this.bookId = bookId;
         this.recordCreateTime = recordCreateTime;
     }
