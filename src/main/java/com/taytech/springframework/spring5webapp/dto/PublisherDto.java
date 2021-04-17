@@ -12,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Publisher {
+public class PublisherDto {
 
     @NotNull
     private String name;
@@ -30,9 +30,9 @@ public class Publisher {
     private String zipcode;
 
     @NotNull
-    private Set<Book> books = new HashSet<>();
+    private Set<BookDto> bookDtos = new HashSet<>();
 
-    public Publisher(){}
+    public PublisherDto(){}
 
     public String getName() {
         return name;
@@ -74,11 +74,11 @@ public class Publisher {
         this.zipcode = zipcode;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+    public Set<BookDto> getBookDtos() {
+        return bookDtos;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setBookDtos(Set<BookDto> bookDtos) {
+        this.bookDtos = bookDtos;
     }
 }

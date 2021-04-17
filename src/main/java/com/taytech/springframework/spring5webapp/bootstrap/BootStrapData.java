@@ -1,7 +1,7 @@
 package com.taytech.springframework.spring5webapp.bootstrap;
 
-import com.taytech.springframework.spring5webapp.dto.Author;
-import com.taytech.springframework.spring5webapp.dto.Book;
+import com.taytech.springframework.spring5webapp.dto.AuthorDto;
+import com.taytech.springframework.spring5webapp.dto.BookDto;
 import com.taytech.springframework.spring5webapp.faker.FakerObject;
 import com.taytech.springframework.spring5webapp.repository.AuthorRepository;
 import com.taytech.springframework.spring5webapp.repository.BookRepository;
@@ -29,11 +29,11 @@ public class BootStrapData implements CommandLineRunner {
         String bookPublisher = fakerObject.getBookPublisher();
         String bookGenre = fakerObject.getBookGenre();
 
-        Author author = new Author(authorFirstName, authorLastName);
-        Book book = new Book(bookTitle, "ISBN 978-2-12-345680-3");
+        AuthorDto authorDto = new AuthorDto(authorFirstName, authorLastName);
+        BookDto bookDto = new BookDto(bookTitle, "ISBN 978-2-12-345680-3");
 
-        author.getBooks().add(book);
-        book.getAuthors().add(author);
+        authorDto.getBookDtos().add(bookDto);
+        bookDto.getAuthorDtos().add(authorDto);
 
        // TODO add test data to DB after mapper is completed
     }

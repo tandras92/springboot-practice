@@ -11,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Author {
+public class AuthorDto {
 
     @NotNull
     private String firstName;
@@ -20,11 +20,11 @@ public class Author {
     private String lastName;
 
     @NotNull
-    private Set<Book> books = new HashSet<>();
+    private Set<BookDto> bookDtos = new HashSet<>();
 
-    public Author() {}
+    public AuthorDto() {}
 
-    public Author(String firstName, String lastName) {
+    public AuthorDto(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -45,11 +45,11 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+    public Set<BookDto> getBookDtos() {
+        return bookDtos;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setBookDtos(Set<BookDto> bookDtos) {
+        this.bookDtos = bookDtos;
     }
 }

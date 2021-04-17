@@ -11,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Book {
+public class BookDto {
 
     @NotNull
     private String title;
@@ -23,14 +23,14 @@ public class Book {
     private String genre;
 
     @NotNull
-    private Publisher publisher;
+    private PublisherDto publisherDto;
 
     @NotNull
-    private Set<Author> authors = new HashSet<>();
+    private Set<AuthorDto> authorDtos = new HashSet<>();
 
-    public Book() {}
+    public BookDto() {}
 
-    public Book(String title, String isbn) {
+    public BookDto(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
     }
@@ -51,12 +51,12 @@ public class Book {
         this.genre = genre;
     }
 
-    public Publisher getPublisher() {
-        return publisher;
+    public PublisherDto getPublisherDto() {
+        return publisherDto;
     }
 
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
+    public void setPublisherDto(PublisherDto publisherDto) {
+        this.publisherDto = publisherDto;
     }
 
     public String getIsbn() {
@@ -67,12 +67,12 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
+    public Set<AuthorDto> getAuthorDtos() {
+        return authorDtos;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
+    public void setAuthorDtos(Set<AuthorDto> authorDtos) {
+        this.authorDtos = authorDtos;
     }
 
 }
