@@ -2,21 +2,29 @@ package com.taytech.springframework.spring5webapp.bootstrap;
 
 import com.taytech.springframework.spring5webapp.dto.AuthorDto;
 import com.taytech.springframework.spring5webapp.dto.BookDto;
+import com.taytech.springframework.spring5webapp.dto.PublisherDto;
 import com.taytech.springframework.spring5webapp.faker.FakerObject;
-import com.taytech.springframework.spring5webapp.repository.AuthorRepository;
-import com.taytech.springframework.spring5webapp.repository.BookRepository;
+import com.taytech.springframework.spring5webapp.service.AuthorService;
+import com.taytech.springframework.spring5webapp.service.BookService;
+import com.taytech.springframework.spring5webapp.service.PublisherService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
 
-    private final AuthorRepository authorRepository;
-    private final BookRepository bookRepository;
+    private final BookService bookService;
+    private final AuthorService authorService;
+    private final PublisherService publisherService;
 
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
-        this.authorRepository = authorRepository;
-        this.bookRepository = bookRepository;
+    public BootStrapData(BookService bookService, AuthorService authorService, PublisherService publisherService) {
+
+        this.bookService = bookService;
+        this.authorService = authorService;
+        this.publisherService = publisherService;
     }
 
     @Override
@@ -26,15 +34,57 @@ public class BootStrapData implements CommandLineRunner {
         String authorFirstName = fakerObject.getAuthorFirstName();
         String authorLastName = fakerObject.getAuthorLastName();
         String bookTitle = fakerObject.getBookTitle();
-        String bookPublisher = fakerObject.getBookPublisher();
         String bookGenre = fakerObject.getBookGenre();
+        String bookISBN = isbn13Generator();
+        String publisherName = fakerObject.getPublisherName();
+        String publisherAddress = fakerObject.getPublisherAddress();
+        String publisherCity = fakerObject.getPublisherCity();
+        String publisherState = fakerObject.getPublisherState();
+        String publisherZipCode = fakerObject.getPublisherZipCode();
 
-        AuthorDto authorDto = new AuthorDto(authorFirstName, authorLastName);
-        BookDto bookDto = new BookDto(bookTitle, "ISBN 978-2-12-345680-3");
+        PublisherDto publisherDto = PublisherDto.builder()
+        .id(UUID.randomUUID())
+        .name(publisherName)
+        .address(publisherAddress)
+        .city(publisherCity)
+        .state(publisherState)
+        .zipcode(publisherZipCode)
+        .build();
 
-        authorDto.getBookDtos().add(bookDto);
-        bookDto.getAuthorDtos().add(authorDto);
 
-       // TODO add test data to DB after mapper is completed
+
+        BookDto bookDto = BookDto.builder()
+                .uuid(UUID.randomUUID())
+                .title(bookTitle)
+                .genre(bookGenre)
+                .isbn(bookISBN)
+                .publisherDto(publisherDto)
+                .createdDate(LocalDateTime.now())
+                .returnedDate(LocalDateTime.now().plusDays(6))
+                .build();
+
+
+        AuthorDto authorDto = AuthorDto.builder()
+                .id(UUID.randomUUID())
+                .firstName(authorFirstName)
+                .lastName(authorLastName)
+                .build();
+
+
+        bookService.processEvent(bookDto);
+        authorService.processEvent(authorDto);
+        publisherService.processEvent(publisherDto);
+    }
+
+    public static String isbn13Generator() {
+        StringBuilder isbn = new StringBuilder();
+        int number;
+
+        while(isbn.length() <= 12) {
+            number = (int)
+                    (Math.random() * 10);
+                isbn.append(number);
+        }
+            return isbn.toString();
     }
 }

@@ -1,0 +1,8 @@
+-- DROP TABLE IF EXISTS author;
+--
+-- CREATE TABLE author(
+--     author_id uuid NOT NULL,
+--     first_nm varchar(50) NOT NULL,
+--     last_nm varchar(75) NOT NULL,
+--     PRIMARY KEY (author_id)
+-- );

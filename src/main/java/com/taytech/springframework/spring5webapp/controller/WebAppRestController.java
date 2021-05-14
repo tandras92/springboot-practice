@@ -1,33 +1,61 @@
 package com.taytech.springframework.spring5webapp.controller;
 
 import com.taytech.springframework.spring5webapp.dto.BookDto;
-import com.taytech.springframework.spring5webapp.service.AuthorService;
+import com.taytech.springframework.spring5webapp.model.BookEntity;
 import com.taytech.springframework.spring5webapp.service.BookService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/api/v1/library/catalog")
 @RestController
 public class WebAppRestController {
 
-    private final AuthorService authorService;
-
     private final BookService bookService;
 
-    public WebAppRestController(AuthorService authorService, BookService bookService) {
-        this.authorService = authorService;
+
+    public WebAppRestController(BookService bookService) {
         this.bookService = bookService;
     }
 
-    @GetMapping({"/{bookId}"})
-    public ResponseEntity<BookDto> getBook(@PathVariable UUID bookId) {
-        return new ResponseEntity<>(bookService.getBookById(bookId), HttpStatus.OK);
+    @GetMapping({"/books/{bookId}"})
+    public ResponseEntity<BookEntity> getBook(@PathVariable UUID bookId) {
+
+        final Optional<BookEntity> bookDto = bookService.findBookById(bookId);
+
+        return bookDto.map(bookEntity -> new ResponseEntity<>(bookEntity, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(bookDto.get(), HttpStatus.NOT_FOUND));
     }
+
+    @GetMapping("/books")
+    public @ResponseBody
+    ResponseEntity<List<BookEntity>> getBooks() {
+        final List<BookEntity> books = bookService.findAll();
+
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+
+    @PostMapping(value = "/books", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<BookDto> processEvent(final @RequestBody BookDto bookDto) {
+        bookService.processEvent(bookDto);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location","/api/v1/library/catalog" + bookDto.getUuid().toString());
+
+        RequestContextHolder.currentRequestAttributes().getAttribute(BookDto.class.getSimpleName(), RequestAttributes.SCOPE_REQUEST);
+
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+    }
+
 
 }

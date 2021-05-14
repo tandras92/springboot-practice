@@ -3,11 +3,14 @@ package com.taytech.springframework.spring5webapp.mapper;
 import com.taytech.springframework.spring5webapp.dto.PublisherDto;
 import com.taytech.springframework.spring5webapp.model.PublisherEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PublisherMapper {
 
-    PublisherDto convertPublisherEntityToPublisherDto(PublisherEntity publisherEntity);
+    @Mapping(target = "bookDtos", source = "books")
+    PublisherDto convertPublisherEntityToDto(PublisherEntity publisherEntity);
 
-    PublisherEntity convertPublisherDtoToPublisherEntity(PublisherDto publisherDto);
+    @Mapping(target = "books", source = "bookDtos")
+    PublisherEntity convertPublisherDtoToEntity(PublisherDto publisherDto);
 }

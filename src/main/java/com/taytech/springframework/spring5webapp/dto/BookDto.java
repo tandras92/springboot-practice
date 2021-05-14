@@ -1,16 +1,24 @@
 package com.taytech.springframework.spring5webapp.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class BookDto {
+
+    @NotNull
+    private UUID uuid;
 
     @NotNull
     private String title;
@@ -23,6 +31,12 @@ public class BookDto {
 
     @NotNull
     private PublisherDto publisherDto;
+
+    @NotNull
+    private LocalDateTime createdDate;
+
+    @NotNull
+    private LocalDateTime returnedDate;
 
     @NotNull
     private Set<AuthorDto> authorDtos = new HashSet<>();
