@@ -58,7 +58,7 @@ public class BootStrapData implements CommandLineRunner {
                 .title(bookTitle)
                 .genre(bookGenre)
                 .isbn(bookISBN)
-                .publisherDto(publisherDto)
+                .publisherId(publisherDto.getId())
                 .createdDate(LocalDateTime.now())
                 .returnedDate(LocalDateTime.now().plusDays(6))
                 .build();

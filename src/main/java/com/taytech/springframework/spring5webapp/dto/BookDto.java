@@ -30,7 +30,7 @@ public class BookDto {
     private String genre;
 
     @NotNull
-    private PublisherDto publisherDto;
+    private UUID publisherId;
 
     @NotNull
     private LocalDateTime createdDate;

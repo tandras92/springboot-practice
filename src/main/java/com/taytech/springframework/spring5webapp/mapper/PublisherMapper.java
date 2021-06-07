@@ -9,8 +9,10 @@ import org.mapstruct.Mapping;
 public interface PublisherMapper {
 
     @Mapping(target = "bookDtos", source = "books")
+    @Mapping(target = "id", source = "id")
     PublisherDto convertPublisherEntityToDto(PublisherEntity publisherEntity);
 
     @Mapping(target = "books", source = "bookDtos")
+    @Mapping(target = "id", source = "id")
     PublisherEntity convertPublisherDtoToEntity(PublisherDto publisherDto);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -46,7 +47,7 @@ public class BookEntity {
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<AuthorEntity> authors;
+    private Set<AuthorEntity> authors = new HashSet<>();
 
 
 //    @PrePersist
@@ -59,16 +60,4 @@ public class BookEntity {
 //        }
 //    }
 
-    @Override
-    public String toString() {
-        return "BookEntity{" +
-                "bookId=" + bookId +
-                ", recordCreateTime=" + recordCreateTime +
-                ", title='" + title + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", genre='" + genre + '\'' +
-                ", publishers=" + publishers +
-                ", authors=" + authors +
-                '}';
-    }
 }

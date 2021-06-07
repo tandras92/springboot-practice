@@ -3,11 +3,13 @@ package com.taytech.springframework.spring5webapp.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 @Getter
 @Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -28,7 +30,7 @@ public class AuthorEntity {
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<BookEntity> books;
+    private Set<BookEntity> books = new HashSet<>();
 
     @Override
     public String toString() {
@@ -38,21 +40,5 @@ public class AuthorEntity {
                 ", lastName='" + lastName + '\'' +
                 ", books=" + books +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        AuthorEntity that = (AuthorEntity) o;
-
-        assert id != null;
-        return id.equals(that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 }
