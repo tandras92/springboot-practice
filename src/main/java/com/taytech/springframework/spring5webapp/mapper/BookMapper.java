@@ -6,6 +6,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+/**
+ * This class uses the Mapstruct library to map the book entity to the book dto and vice versa
+ */
 @Mapper(componentModel = "spring")
 public interface BookMapper {
 
