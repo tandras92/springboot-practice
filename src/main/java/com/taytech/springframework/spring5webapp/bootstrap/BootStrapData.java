@@ -80,6 +80,9 @@ public class BootStrapData implements CommandLineRunner {
         publisherService.processEvent(publisherDto);
     }
 
+    /*
+    A method that generates a dummy ISBN13 number for testing purposes
+     */
     public static String isbn13Generator() {
         StringBuilder isbn = new StringBuilder();
         int number;
