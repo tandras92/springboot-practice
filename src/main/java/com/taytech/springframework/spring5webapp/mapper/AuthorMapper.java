@@ -5,6 +5,9 @@ import com.taytech.springframework.spring5webapp.model.AuthorEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+/**
+ * This class uses the Mapstruct library to map the author entity to the author dto and vice versa
+ */
 @Mapper(componentModel = "spring")
 public interface AuthorMapper {
 
