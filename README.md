@@ -7,3 +7,9 @@ This application was created so I can better understand on how to create an API 
 * Java 11+
 * An IDE (IntelliJ IDEA, Visual Studio Code, Eclipse, Netbeans)
 * Maven
+
+
+## Features To Add
+- [ ] Base project that can run and build successfully
+- [ ] Implement a UI in React
+- [ ] Implement Spring Security
