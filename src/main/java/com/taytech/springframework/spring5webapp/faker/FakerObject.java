@@ -4,7 +4,9 @@ import com.github.javafaker.Faker;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+/**
+ * This class utilizes the Javafaker library to generate fake data.  Find more information here https://github.com/DiUS/java-faker
+ */
 @Data
 @NoArgsConstructor
 public class FakerObject {
