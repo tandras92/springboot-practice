@@ -5,6 +5,9 @@ import com.taytech.springframework.spring5webapp.model.PublisherEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+/**
+ * This class uses the Mapstruct library to map the publisher entity to the publisher dto and vice versa
+ */
 @Mapper(componentModel = "spring")
 public interface PublisherMapper {
 
