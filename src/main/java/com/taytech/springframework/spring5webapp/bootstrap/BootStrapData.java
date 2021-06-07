@@ -13,6 +13,10 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
+/**
+ * This class is used to generate data and persist it to the database
+ */
 @Component
 public class BootStrapData implements CommandLineRunner {
 
