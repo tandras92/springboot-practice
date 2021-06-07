@@ -42,14 +42,5 @@ public class PublisherEntity {
     @JoinColumn(name="publisher_id")
     private Set<BookEntity> books = new HashSet<>();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PublisherEntity that = (PublisherEntity) o;
-
-        return id.equals(that.id);
-    }
 
 }
