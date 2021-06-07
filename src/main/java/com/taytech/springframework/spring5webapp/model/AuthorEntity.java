@@ -32,13 +32,4 @@ public class AuthorEntity {
     @ManyToMany(mappedBy = "authors")
     private Set<BookEntity> books = new HashSet<>();
 
-    @Override
-    public String toString() {
-        return "AuthorEntity{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", books=" + books +
-                '}';
-    }
 }
