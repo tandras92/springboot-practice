@@ -22,7 +22,7 @@ public class WebAppRestController {
 
     private final BookService bookService;
 
-
+//todo: Remove not needed constructor. @AllArgsConsructor will Gen thus for you.
     public WebAppRestController(BookService bookService) {
         this.bookService = bookService;
     }
