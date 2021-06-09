@@ -29,7 +29,7 @@ public class BookEntity {
     @Column(name = "book_id", columnDefinition = "uuid", nullable = false)
     private UUID bookId;
 
-    @Column(name = "record_create_ts", nullable = false)
+    @Column(name = "record_create_ts", columnDefinition = "TIMESTAMP", nullable = false)
     private LocalDateTime recordCreateTime;
 
     @Column(name = "book_title", columnDefinition = "varchar", nullable = false, length = 75)
