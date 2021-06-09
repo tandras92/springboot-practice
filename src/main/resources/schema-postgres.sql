@@ -1,8 +1,34 @@
 -- DROP TABLE IF EXISTS author;
+-- DROP TABLE IF EXISTS book;
+-- DROP TABLE IF EXISTS publisher;
 --
 -- CREATE TABLE author(
 --     author_id uuid NOT NULL,
 --     first_nm varchar(50) NOT NULL,
 --     last_nm varchar(75) NOT NULL,
 --     PRIMARY KEY (author_id)
+--     CONSTRAINT fk_book
+--      FOREIGN KEY(book_id)
+--	  REFERENCES book(book_id)
 -- );
+--
+--CREATE TABLE book(
+--   book_id uuid NOT NULL,
+--   record_create_ts TIMESTAMP NOT NULL,
+--   book_title VARCHAR(75) NOT NULL,
+--   book_isbn VARCHAR(13),
+--   book_genre VARCHAR(75),
+--   PRIMARY KEY(book_id),
+--   CONSTRAINT fk_publisher
+--      FOREIGN KEY(publisher_id)
+--	  REFERENCES publisher(publisher_id)
+--);
+--
+--CREATE TABLE publisher(
+--    publisher_id uuid NOT NULL,
+--    publisher_nm VARCHAR(75) NOT NULL,
+--    publisher_address VARCHAR(75) NOT NULL,
+--    publisher_city VARCHAR(75) NOT NULL,
+--    publisher_state_cd CHAR(2) NOT NULL,
+--    publisher_zipcode CHAR(6) NOT NULL
+--);
