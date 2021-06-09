@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -25,12 +26,9 @@ public class BookEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-//    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "book_id", columnDefinition = "uuid", nullable = false)
     private UUID bookId;
-
-    @Column(name = "record_create_ts", columnDefinition = "TIMESTAMP", nullable = false)
-    private LocalDateTime recordCreateTime;
 
     @Column(name = "book_title", columnDefinition = "varchar", nullable = false, length = 75)
     private String title;
@@ -40,6 +38,12 @@ public class BookEntity {
 
     @Column(name = "book_genre", columnDefinition = "varchar", nullable = false, length = 75)
     private String genre;
+
+    @Column(name = "record_create_ts", columnDefinition = "TIMESTAMP", nullable = false)
+    private LocalDateTime recordCreateTime;
+
+    @Column(name = "returned_date_ts", columnDefinition = "TIMESTAMP", nullable = false)
+    private LocalDateTime returnedDate;
 
     @ManyToOne
     private PublisherEntity publishers;

@@ -1,6 +1,7 @@
 package com.taytech.springframework.spring5webapp.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -19,7 +20,7 @@ public class AuthorEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-//    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "author_id", columnDefinition = "uuid", updatable = false, nullable = false)
     private UUID id;
 

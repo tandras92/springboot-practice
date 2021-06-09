@@ -1,5 +1,6 @@
 package com.taytech.springframework.spring5webapp.dto;
 
+import com.taytech.springframework.spring5webapp.model.PublisherEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,13 +31,13 @@ public class BookDto {
     private String genre;
 
     @NotNull
-    private UUID publisherId;
-
-    @NotNull
     private LocalDateTime createdDate;
 
     @NotNull
     private LocalDateTime returnedDate;
+
+    @NotNull
+    private PublisherEntity publisherId;
 
     @NotNull
     private Set<AuthorDto> authorDtos = new HashSet<>();
@@ -46,4 +47,3 @@ public class BookDto {
         this.isbn = isbn;
     }
 }
-
