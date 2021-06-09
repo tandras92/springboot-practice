@@ -4,9 +4,10 @@
 --
 -- CREATE TABLE author(
 --     author_id uuid NOT NULL,
+--     book_id uuid NOT NULL,
 --     first_nm varchar(50) NOT NULL,
 --     last_nm varchar(75) NOT NULL,
---     PRIMARY KEY (author_id)
+--     PRIMARY KEY (author_id),
 --     CONSTRAINT fk_book
 --      FOREIGN KEY(book_id)
 --	  REFERENCES book(book_id)
@@ -14,6 +15,7 @@
 --
 --CREATE TABLE book(
 --   book_id uuid NOT NULL,
+--   publisher_id uuid NOT NULL,
 --   record_create_ts TIMESTAMP NOT NULL,
 --   book_title VARCHAR(75) NOT NULL,
 --   book_isbn VARCHAR(13),
