@@ -22,7 +22,7 @@ public class WebAppRestController {
 
     private final BookService bookService;
 
-
+//todo: Remove not needed constructor. @AllArgsConsructor will Gen thus for you.
     public WebAppRestController(BookService bookService) {
         this.bookService = bookService;
     }
@@ -48,7 +48,7 @@ public class WebAppRestController {
     @PostMapping(value = "/books", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookDto> processEvent(final @RequestBody BookDto bookDto) {
         bookService.processEvent(bookDto);
-
+//Todo: Explain the need for headers, and a session
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location","/api/v1/library/catalog" + bookDto.getUuid().toString());
 
