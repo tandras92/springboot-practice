@@ -11,16 +11,7 @@ import org.mapstruct.Mappings;
  */
 @Mapper(componentModel = "spring")
 public interface PublisherMapper {
-
-    @Mappings({
-            @Mapping(target = "bookDtos", source = "books"),
-            @Mapping(target = "id", source = "id")
-    })
     PublisherDto convertPublisherEntityToDto(PublisherEntity publisherEntity);
 
-    @Mappings({
-            @Mapping(target = "books", source = "bookDtos"),
-            @Mapping(target = "id", source = "id")
-    })
     PublisherEntity convertPublisherDtoToEntity(PublisherDto publisherDto);
 }
