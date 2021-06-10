@@ -13,7 +13,7 @@ import org.mapstruct.Mappings;
 public interface AuthorMapper {
 
     @Mappings({
-            @Mapping(target = "bookDtos", source = "books"),
+            @Mapping(target = "books", source = "books"),
             @Mapping(target = "firstName", source = "firstName"),
             @Mapping(target = "lastName", source = "lastName")
     })
@@ -21,7 +21,7 @@ public interface AuthorMapper {
 
     @Mappings({
             @Mapping(target = "id", source = "id"),
-            @Mapping(target = "books", source = "bookDtos"),
+            @Mapping(target = "books", source = "books"),
             @Mapping(target = "firstName", source = "firstName"),
             @Mapping(target = "lastName", source = "lastName")
     })

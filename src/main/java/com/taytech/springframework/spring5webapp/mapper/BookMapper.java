@@ -14,20 +14,14 @@ public interface BookMapper {
 
     @Mappings({
             @Mapping(target = "recordCreateTime", source = "createdDate"),
-            @Mapping(target = "bookId", source = "uuid"),
-            @Mapping(target = "authors", source = "authorDtos"),
-            @Mapping(target = "publishers", source = "publisherId")
+            @Mapping(target = "bookId", source = "id"),
     })
     BookEntity convertBookDtoToEntity(BookDto bookDto);
 
 
    @Mappings({
-           @Mapping(target = "uuid", source = "bookId"),
-           @Mapping(target = "createdDate", source = "recordCreateTime"),
-           @Mapping(target = "authorDtos", source = "authors"),
-           @Mapping(target = "publisherId", source = "publishers")
+           @Mapping(target = "id", source = "bookId"),
+           @Mapping(target = "createdDate", source = "recordCreateTime")
    })
-    BookDto convertBookEntityToBookDto(BookEntity bookEntity);
-
-
+BookDto convertBookEntityToBookDto(BookEntity bookEntity);
 }
