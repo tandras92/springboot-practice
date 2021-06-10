@@ -1,5 +1,6 @@
 package com.taytech.springframework.spring5webapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,23 +20,30 @@ import java.util.UUID;
 public class PublisherDto {
 
     @NotNull
+    @JsonProperty("id")
     private UUID id;
 
     @NotNull
+    @JsonProperty("name")
     private String name;
 
     @NotNull
+    @JsonProperty("address")
     private String address;
 
     @NotNull
+    @JsonProperty("city")
     private String city;
 
     @NotNull
+    @JsonProperty("state")
     private String state;
 
     @NotNull
+    @JsonProperty("zipcode")
     private String zipcode;
 
     @NotNull
-    private Set<BookDto> bookDtos = new HashSet<>();
+    @JsonProperty("books")
+    private Set<BookDto> books = new HashSet<>();
 }
