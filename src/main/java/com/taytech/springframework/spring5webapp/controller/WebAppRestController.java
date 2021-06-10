@@ -48,13 +48,8 @@ public class WebAppRestController {
     @PostMapping(value = "/books", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookDto> processEvent(final @RequestBody BookDto bookDto) {
         bookService.processEvent(bookDto);
-//Todo: Explain the need for headers, and a session
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Location","/api/v1/library/catalog" + bookDto.getId().toString());
 
-        RequestContextHolder.currentRequestAttributes().getAttribute(BookDto.class.getSimpleName(), RequestAttributes.SCOPE_REQUEST);
-
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 
