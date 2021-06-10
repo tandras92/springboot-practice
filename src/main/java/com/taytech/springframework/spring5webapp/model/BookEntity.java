@@ -46,11 +46,9 @@ public class BookEntity {
     private LocalDateTime returnedDate;
 
     @ManyToOne
-    private PublisherEntity publishers;
+    private PublisherEntity publisherId;
 
-    @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
     private Set<AuthorEntity> authors = new HashSet<>();
 
 
