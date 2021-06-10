@@ -56,13 +56,14 @@
 //        .zipcode(publisherZipCode)
 //        .build();
 //
+//        PublisherEntity publisherEntity = publisherService.convertPublisherDtoToEntity(publisherDto);
 //
 //        BookDto bookDto = BookDto.builder()
-//                .uuid(UUID.randomUUID())
+//                .id(UUID.randomUUID())
 //                .title(bookTitle)
 //                .genre(bookGenre)
 //                .isbn(bookISBN)
-//                .publisherId()
+//                .publishers(publisherEntity)
 //                .createdDate(LocalDateTime.now())
 //                .returnedDate(LocalDateTime.now().plusDays(6))
 //                .build();
@@ -74,10 +75,9 @@
 //                .lastName(authorLastName)
 //                .build();
 //
-//
+//        publisherService.processEvent(publisherDto);
 //        bookService.processEvent(bookDto);
 //        authorService.processEvent(authorDto);
-//        publisherService.processEvent(publisherDto);
 //    }
 //
 //    /*

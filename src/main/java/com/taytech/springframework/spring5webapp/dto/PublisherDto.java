@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -45,5 +43,5 @@ public class PublisherDto {
 
     @NotNull
     @JsonProperty("books")
-    private Set<BookDto> books = new HashSet<>();
+    private List<BookDto> books = new ArrayList<>();
 }

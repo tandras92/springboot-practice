@@ -3,11 +3,10 @@ package com.taytech.springframework.spring5webapp.model;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 
 @Data
@@ -37,6 +36,6 @@ public class AuthorEntity {
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
-    private Set<BookEntity> books = new HashSet<>();
+    private List<BookEntity> books = new ArrayList<>();
 
 }

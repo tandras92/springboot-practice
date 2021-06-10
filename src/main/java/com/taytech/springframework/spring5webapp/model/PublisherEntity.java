@@ -5,9 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 
 @Data
@@ -42,7 +40,7 @@ public class PublisherEntity {
 
     @OneToMany
     @JoinColumn(name="publisher_id")
-    private Set<BookEntity> books = new HashSet<>();
+    private List<BookEntity> books = new ArrayList<>();
 
 
 }

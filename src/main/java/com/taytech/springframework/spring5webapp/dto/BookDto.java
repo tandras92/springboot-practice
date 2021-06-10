@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -44,15 +42,10 @@ public class BookDto {
     private LocalDateTime returnedDate;
 
     @NotNull
-    @JsonProperty("publisherId")
-    private PublisherEntity publisherId;
+    @JsonProperty("publishers")
+    private PublisherEntity publishers;
 
     @NotNull
     @JsonProperty("authors")
-    private Set<AuthorDto> authors = new HashSet<>();
-
-    public BookDto(String title, String isbn) {
-        this.title = title;
-        this.isbn = isbn;
-    }
+    private List<AuthorDto> authors = new ArrayList<>();
 }

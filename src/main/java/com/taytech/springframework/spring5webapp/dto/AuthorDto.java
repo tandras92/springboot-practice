@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -28,10 +26,5 @@ public class AuthorDto {
 
     @NotNull
     @JsonProperty("books")
-    private Set<BookDto> books = new HashSet<>();
-
-    public AuthorDto(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+    private List<BookDto> books = new ArrayList<>();
 }

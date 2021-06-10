@@ -10,9 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 @Data
@@ -46,10 +44,10 @@ public class BookEntity {
     private LocalDateTime returnedDate;
 
     @ManyToOne
-    private PublisherEntity publisherId;
+    private PublisherEntity publishers;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
-    private Set<AuthorEntity> authors = new HashSet<>();
+    private List<AuthorEntity> authors = new ArrayList<>();
 
 
 //    @PrePersist
