@@ -50,7 +50,7 @@ public class WebAppRestController {
         bookService.processEvent(bookDto);
 //Todo: Explain the need for headers, and a session
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location","/api/v1/library/catalog" + bookDto.getUuid().toString());
+        headers.add("Location","/api/v1/library/catalog" + bookDto.getId().toString());
 
         RequestContextHolder.currentRequestAttributes().getAttribute(BookDto.class.getSimpleName(), RequestAttributes.SCOPE_REQUEST);
 
