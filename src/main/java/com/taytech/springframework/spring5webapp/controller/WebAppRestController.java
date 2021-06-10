@@ -3,6 +3,7 @@ package com.taytech.springframework.spring5webapp.controller;
 import com.taytech.springframework.spring5webapp.dto.BookDto;
 import com.taytech.springframework.spring5webapp.model.BookEntity;
 import com.taytech.springframework.spring5webapp.service.BookService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,14 +19,12 @@ import java.util.UUID;
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/api/v1/library/catalog")
 @RestController
+@AllArgsConstructor
 public class WebAppRestController {
 
     private final BookService bookService;
 
 //todo: Remove not needed constructor. @AllArgsConsructor will Gen thus for you.
-    public WebAppRestController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @GetMapping({"/books/{bookId}"})
     public ResponseEntity<BookEntity> getBook(@PathVariable UUID bookId) {
