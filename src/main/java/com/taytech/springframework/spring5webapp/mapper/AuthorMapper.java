@@ -6,6 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.Set;
+
 /**
  * This class uses the Mapstruct library to map the author entity to the author dto and vice versa
  */
@@ -26,4 +28,6 @@ public interface AuthorMapper {
             @Mapping(target = "lastName", source = "lastName")
     })
     AuthorEntity convertAuthorDtoToEntity(AuthorDto authorDto);
+
+    Set<AuthorDto> convertAuthorEntityToDtos(Set<AuthorEntity> authors);
 }

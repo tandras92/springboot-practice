@@ -7,6 +7,8 @@ import com.taytech.springframework.spring5webapp.repository.AuthorRepository;
 import com.taytech.springframework.spring5webapp.service.AuthorService;
 import org.springframework.stereotype.Component;
 
+import java.util.Set;
+
 @Component
 public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository authorRepository;
@@ -37,6 +39,11 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public AuthorDto convertEntityToAuthorDto(AuthorEntity authorEntity) {
         return authorMapper.convertAuthorEntityToDto(authorEntity);
+    }
+
+    @Override
+    public Set<AuthorDto> convertAuthorEntityToDtos(Set<AuthorEntity> authors) {
+        return authorMapper.convertAuthorEntityToDtos(authors);
     }
 
     private void saveAuthor(final AuthorDto authorDto) {
