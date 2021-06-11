@@ -47,7 +47,7 @@ public class BookEntity {
     private PublisherEntity publishers;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
-    private List<AuthorEntity> authors = new ArrayList<>();
+    private Set<AuthorEntity> authors = new HashSet<>();
 
 
 //    @PrePersist

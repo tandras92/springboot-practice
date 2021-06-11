@@ -40,7 +40,7 @@ public class PublisherEntity {
 
     @OneToMany
     @JoinColumn(name="publisher_id")
-    private List<BookEntity> books = new ArrayList<>();
+    private Set<BookEntity> books = new HashSet<>();
 
 
 }

@@ -43,5 +43,5 @@ public class PublisherDto {
 
     @NotNull
     @JsonProperty("books")
-    private List<BookDto> books = new ArrayList<>();
+    private Set<BookDto> books = new HashSet<>();
 }
